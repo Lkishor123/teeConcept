@@ -1,0 +1,14 @@
+enclave {
+    from "sgx_tstdc.edl" import *;
+    from "sgx_tservice.edl" import *;
+
+    trusted {
+        public void enclave_train([in, size=num_elements] double* x,
+                                  [in, size=num_elements] double* y,
+                                  size_t num_elements,
+                                  double learning_rate,
+                                  int iterations,
+                                  [out] double* m,
+                                  [out] double* b);
+    };
+};

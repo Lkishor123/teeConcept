@@ -1,0 +1,15 @@
+enclave {
+    from "sgx_tstdc.edl" import *;
+    from "sgx_tservice.edl" import *;
+
+    trusted {
+        /* Declare the trusted function that will be called from the untrusted app */
+        public void enclave_entry_point();
+    };
+
+    untrusted {
+        /* If needed, declare untrusted functions (OCALLs) that the enclave can call */
+        void ocall_print([in, string] const char* str);
+        void ocall_print_double([in, string] const char* label, double val);
+    };
+};
